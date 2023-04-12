@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="./assets/img/jerry keke.png">
+    <title>ES6 - OOP</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Font Roboto  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap"rel="stylesheet">
+
+    <!-- font pacifico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Animate -->
+    <!-- <link rel="stylesheet" href="css/animate.css"> -->
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./assets/css/modal.css" />
+
+    <link rel="stylesheet" href="./assets/css/style4.css" />
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+
+    <link rel="stylesheet" href="./assets/css/index.css">
+
+</head>
+
+<body>
+    <!-- header Menu -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-user"></i>
+                <a class=' ' href=".">Quản lý học viện</a>
+            </div>
+            <div class="menu-header">
+                <a class='' href=".">Home</a>
+                <a class='' href=".">About</a>
+                <a class='' href=".">Contact</a>
+                <div class="loader2">
+                    <div class="load21"></div>
+                    <div class="load22"></div>
+                    <div class="load23"></div>
+                    <div class="load24"></div>
+                    <div class="load25"></div>
+                  </div>
+            </div>
+        </div>
+    </header>
+    <!-- Body -->
+    <section class="body">
+        <div class="container">
+            <div class="body-flex">
+                <!-- list -->
+                <div class="list w-100">
+                    <div class="header-list row">
+                        <div class="col-md-6 left-header">
+                            <h3>Danh Sách học viện</h3>
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="col-md-6 text-right right-header">
+                            <button class="btn btn-primary" id="btnThemStudent" data-toggle="modal" data-target="#myModalStudent">
+                                Thêm sinh viên
+                              </button>
+                              <button class="btn btn-primary" id="btnThemEmployee" data-toggle="modal" data-target="#myModalEmployee">
+                                Thêm người làm
+                              </button>
+                              <button class="btn btn-primary" id="btnThemCustomer" data-toggle="modal" data-target="#myModalCustomer">
+                                Thêm khách hàng
+                              </button> 
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <select class="form-control" id="timNV">
+                          <option value="allUser">Tất cả người dùng</option>
+                          <option value="student">Sinh viên</option>
+                          <option value="employee">Nhân viên</option>
+                          <option value="customer">Khách hàng</option>
+                        </select>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="btnTimNV">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <table class="table table-bordered table-hover myTable">
+                        <thead class="text-primary">
+                          <tr>
+                            <th class="nowrap">
+                              <span class="mr-1">Mã</span>
+                            </th>
+                            <th>Họ tên
+                              <i class="fa fa-arrow-up" id="SapXepTang"></i>
+                              <i class="fa fa-arrow-down" id="SapXepGiam"></i>
+                            </th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                            <th>Khác</th>
+                            <th><em class="fa fa-cog"></em></th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableDanhSach"></tbody>
+                      </table>
+                </div>
+                <!-- tool bar -->
+                <div class="tool-bar w-25">
+                    <div class="tool-title">
+                        <h2>Setting</h2>
+                        <i class="fa-sharp fa-solid fa-gear"></i>
+                    </div>
+                    <div class="tool-body">
+                        <div class="tool-content">
+                            <button class="btn" id="btnListUp">
+                                <i class="fa-solid fa-chevron-right"></i>
+                                <span>Sắp xếp danh sách</span>
+                                <i class="fa-solid fa-arrow-up"></i>
+                            </button>
+                            <button class="btn" id="btnListDown">
+                              <i class="fa-solid fa-chevron-right"></i>
+                              <span>Sắp xếp danh sách</span>
+                              <i class="fa-solid fa-arrow-down"></i>
+                          </button>
+                            <button class="btn" id="btnTinhDTB">
+                                <i class="fa-solid fa-chevron-right"></i>
+                                <span>Tính điểm trung bình</span>
+                            </button>
+                            <button class="btn" id="btnTinhLuong">
+                                <i class="fa-solid fa-chevron-right"></i>
+                                <span>Tính Lương</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright © Your Website 2023 | Design by Tèo ~</p>
+        </div>
+    </footer>
+
+  <!-- The Modal Student-->
+  <div class="modal fade" id="myModalStudent">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <header class="head-form mb-0">
+          <h2 id="header-title-Student">Sinh viên</h2>
+        </header>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form role="form" id="mainFormStudent">
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Mã">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                </div>
+                <input type="text" name="ma" id="maStudent" class="form-control input-sm maStudent" placeholder="Mã">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-maStudent"></span>
+              <span class="sp-thongbao" id="error-min-max-length-maStudent"></span>
+              <span class="sp-thongbao" id="error-number-maStudent"></span>
+              <span class="sp-thongbao" id="error-Dup-maStudent"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Họ và Tên">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                </div>
+                <input type="text" name="hoTen" id="hoTenStudent" class="form-control input-sm" placeholder="Họ và tên">
+              </div>
+              <span class="sp-thongbao" id="error-required-hoTenStudent"></span>
+              <span class="sp-thongbao" id="error-allLetter-hoTenStudent"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Địa chỉ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                </div>
+                <input type="text" name="diaChi" id="diaChiStudent" class="form-control input-sm" placeholder="Địa chỉ">
+              </div>
+              <span class="sp-thongbao" id="error-required-diaChiStudent"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Email">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" name="email" id="emailStudent" class="form-control input-sm" placeholder="Email">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-emailStudent"></span>
+              <span class="sp-thongbao" id="error-emailStudent"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Toán">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-calculator" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="toan" id="toan" class="form-control input-sm" placeholder="Toán">
+              </div>
+              <span class="sp-thongbao" id="error-required-toan"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Lý">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-cogs" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="ly" id="ly" class="form-control input-sm" placeholder="Lý">
+              </div>
+              <span class="sp-thongbao" id="error-required-ly"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Hóa">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-flask" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="hoa" id="hoa" class="form-control input-sm" placeholder="Hóa">
+              </div>
+              <span class="sp-thongbao" id="error-required-hoa"></span>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer" id="modal-footer">
+          <button id="btnThemStudentModal" type="button" class="btn btn-success">
+            Thêm người dùng
+          </button>
+          <button id="btnCapNhatStudentModal" type="button" class="btn btn-success">
+            Cập nhật
+          </button>
+          <button id="btnDongStudentModal" type="button" class="btn btn-danger" data-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal Employee-->
+  <div class="modal fade" id="myModalEmployee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <header class="head-form mb-0">
+          <h2 id="header-title-Employee">Người làm</h2>
+        </header>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form role="form" id="mainFormEmployee">
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Mã">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                </div>
+                <input type="text" name="ma" id="maEmployee" class="form-control input-sm maEmployee" placeholder="Mã">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-maEmployee"></span>
+              <span class="sp-thongbao" id="error-min-max-length-maEmployee"></span>
+              <span class="sp-thongbao" id="error-number-maEmployee"></span>
+              <span class="sp-thongbao" id="error-Dup-maEmployee"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Họ và Tên">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                </div>
+                <input type="text" name="hoTen" id="hoTenEmployee" class="form-control input-sm" placeholder="Họ và tên">
+              </div>
+              <span class="sp-thongbao" id="error-required-hoTenEmployee"></span>
+              <span class="sp-thongbao" id="error-allLetter-hoTenEmployee"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Địa chỉ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                </div>
+                <input type="text" name="diaChi" id="diaChiEmployee" class="form-control input-sm" placeholder="Địa chỉ">
+              </div>
+              <span class="sp-thongbao" id="error-required-diaChiEmployee"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Email">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" name="email" id="emailEmployee" class="form-control input-sm" placeholder="Email">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-emailEmployee"></span>
+              <span class="sp-thongbao" id="error-emailEmployee"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Toán">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-calculator" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="soNgayLam" id="soNgayLam" class="form-control input-sm"
+                  placeholder="Số ngày làm">
+              </div>
+              <span class="sp-thongbao" id="error-required-soNgayLam"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Lý">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-cogs" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="luongNgay" id="luongNgay" class="form-control input-sm"
+                  placeholder="Lương ngày">
+              </div>
+              <span class="sp-thongbao" id="error-required-luongNgay"></span>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer" id="modal-footer">
+          <button id="btnThemEmployeeModal" type="button" class="btn btn-success">
+            Thêm người dùng
+          </button>
+          <button id="btnCapNhatEmployeeModal" type="button" class="btn btn-success">
+            Cập nhật
+          </button>
+          <button id="btnDongEmployeeModal" type="button" class="btn btn-danger" data-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal Customer-->
+  <div class="modal fade" id="myModalCustomer">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <header class="head-form mb-0">
+          <h2 id="header-title-Customer">Custome hàng</h2>
+        </header>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form role="form" id="mainFormCustomer">
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Mã">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                </div>
+                <input type="text" name="ma" id="maCustomer" class="form-control input-sm maCustomer" placeholder="Mã">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-maCustomer"></span>
+              <span class="sp-thongbao" id="error-min-max-length-maCustomer"></span>
+              <span class="sp-thongbao" id="error-number-maCustomer"></span>
+              <span class="sp-thongbao" id="error-Dup-maCustomer"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Họ và Tên">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                </div>
+                <input type="text" name="hoTen" id="hoTenCustomer" class="form-control input-sm" placeholder="Họ và tên">
+              </div>
+              <span class="sp-thongbao" id="error-required-hoTenCustomer"></span>
+              <span class="sp-thongbao" id="error-allLetter-hoTenCustomer"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Địa chỉ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                </div>
+                <input type="text" name="diaChi" id="diaChiCustomer" class="form-control input-sm" placeholder="Địa chỉ">
+              </div>
+              <span class="sp-thongbao" id="error-required-diaChiCustomer"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Email">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" name="email" id="emailCustomer" class="form-control input-sm" placeholder="Email">
+              </div>
+
+              <span class="sp-thongbao" id="error-required-emailCustomer"></span>
+              <span class="sp-thongbao" id="error-emailCustomer"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Toán">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-calculator" aria-hidden="true"></i></span>
+                </div>
+                <input type="text" name="tenCongTy" id="tenCongTy" class="form-control input-sm"
+                  placeholder="Tên công ty">
+              </div>
+              <span class="sp-thongbao" id="error-required-tenCongTy"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Lý">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-cogs" aria-hidden="true"></i></span>
+                </div>
+                <input type="number" name="triGiaHoaDon" id="triGiaHoaDon" class="form-control input-sm"
+                  placeholder="Trị giá hoán đổi">
+              </div>
+              <span class="sp-thongbao" id="error-required-triGiaHoaDon"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group" data-toggle="tooltip" data-placement="left" title="Hóa">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-flask" aria-hidden="true"></i></span>
+                </div>
+                <input type="text" name="danhGia" id="danhGia" class="form-control input-sm" placeholder="Đánh giá">
+              </div>
+              <span class="sp-thongbao" id="error-required-danhGia"></span>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer" id="modal-footer">
+          <button id="btnThemCustomerModal" type="button" class="btn btn-success">
+            Thêm người dùng
+          </button>
+          <button id="btnCapNhatCustomerModal" type="button" class="btn btn-success">
+            Cập nhật
+          </button>
+          <button id="btnDongCustomerModal" type="button" class="btn btn-danger" data-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Bootstrap -->
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- Date Picker -->
+<!-- <script src="js/jquery-ui.min.js"></script> -->
+<script src="./js/jquery-ui.js"></script>
+<script src="js/datepicker.js"></script>
+<!-- index -->
+<script type="module" src="./controllers/index.js"></script>
+<!-- Wow -->
+<!-- <script src="js/wow.min.js"></script>	
+  <script>
+      new WOW().init();
+  </script>  -->
+
+<!-- <script src="js/modal.js"></script>1 -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#sidebarCollapse").on("click", function () {
+      $("#sidebar").toggleClass("active");
+    });
+  });
+</script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
